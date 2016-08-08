@@ -1,0 +1,47 @@
+
+<script type="text/ng-template" id="templateId">
+
+    <h1>Template heading</h1>
+
+    <textarea ng-show = "$ctrl.showTextArea" ng-model="codigoHtml.info" style="width:100%; height:350px"></textarea>
+    <div ng-show="!$ctrl.showTextArea" ng-repeat="variable in $ctrl.globalInf">
+      <label>{{variable.originalName}}:</label><input type="text" ng-model="$ctrl.newObj[variable.nameModel]" >
+    </div>
+
+    <button  ng-show ="$ctrl.showButton "  type="button" class="btn btn-default" ng-click="$ctrl.saveChanges(codigoHtml)">Save</button>
+    <button  ng-show ="!$ctrl.showButton" type="button" class="btn btn-default" ng-click="$ctrl.saveChangesDV(codigoHtml)">Save</button>
+
+</script>
+  <uib-alert type="{{$alert.alert.type}}" close="$ctrl.closeAlert()" dismiss-on-timeout="5000" ng-if="$ctrl.showAlert">{{$ctrl.alert.msg}}
+  </uib-alert>
+<div class="container">
+
+  <!--  <button type="button" class="btn btn-default" ng-click="$ctrl.open()">Open me!</button>-->
+<div class="row">
+  <div class="input-group">
+    <input type="file" file-reader="fileContent" />
+    <button type="button" class="btn btn-default" ng-click="$ctrl.clickMe()"> Guardar</button>
+</div >
+
+</div>
+</div>
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-lg-12" >
+      <h1 class="page-header">Páginas:</h1>
+      <ul class="nav nav-tabs nav-stacked col-md-4 col-lg-4 col-sm-6" ng-repeat="page in $ctrl.pages" >
+        <li><div>
+
+          <a href="#" ng-click="$ctrl.showPage(page)">{{page.name}}</a></div></li>
+          <button type="button" class="btn btn-primary" ng-click="$ctrl.open(page)" name="button">Editar Codigo</button>
+          <button type="button" class="btn btn-primary" ng-click="$ctrl.openDV(page)" name="button">Editar Variables dinamicas</button>
+      </ul>
+
+    </div>
+    <div class="col-md-4">
+
+    </div>
+  </div>
+</div>
